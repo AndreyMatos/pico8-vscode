@@ -10,17 +10,17 @@ export function activate(context: vscode.ExtensionContext) {
 
     let disposable = vscode.commands.registerTextEditorCommand('pico8.run', (textEditor: vscode.TextEditor) => {
 
-        let fileName = textEditor.document.fileName;
+        let fileName = "\""+textEditor.document.fileName+"\"";
         let args = ["-windowed", "1", "-run", fileName];
         
         let workspace = vscode.workspace;
         if (workspace) {
-            args.push("-home", workspace.rootPath);
+            args.push("-home", "\""+workspace.rootPath+"\"");
         }
 
-        cp.execFile(p8Config['executablePath'], args, { env: process.env }, (err, stdout, stderr) => {
+        cp.exec(p8Config['executablePath'] + " " + args.join(" "), (err, stdout, stderr) => {
             if (err) {
-                console.log(err);
+                vscode.window.showErrorMessage(err.message);
             }
         })
     });

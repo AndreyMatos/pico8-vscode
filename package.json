@@ -24,24 +24,33 @@
     ],
     "main": "./out/src/extension",
     "contributes": {
-        "languages": [{
-            "id": "pico8",
-            "extensions": [
-                ".p8"
-            ],
-            "configuration": "./syntaxes/language-configuration.json"
-        }],
-        "grammars": [{
-			"language": "pico8",
-			"scopeName": "source.p8",
-			"path": "./syntaxes/pico8.json"
-		}],
-        "commands": [{
-            "command": "pico8.run",
-            "title": "Run a pico8 file"
-        }],
+        "languages": [
+            {
+                "id": "pico8",
+                "extensions": [
+                    ".p8"
+                ],
+                "configuration": "./syntaxes/language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "pico8",
+                "scopeName": "source.p8",
+                "path": "./syntaxes/pico8.json"
+            }
+        ],
+        "commands": [
+            {
+                "command": "pico8.run",
+                "title": "Run a pico8 file"
+            }
+        ],
         "keybindings": [
-            { "key": "cmd+r", "command": "pico8.run" }
+            {
+                "key": "cmd+r",
+                "command": "pico8.run"
+            }
         ],
         "configuration": {
             "type": "object",
@@ -62,7 +71,7 @@
         "test": "node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "typescript": "^2.0.3",
+        "typescript": "3.5.1",
         "vscode": "^1.0.0",
         "mocha": "^2.3.3",
         "@types/node": "^6.0.40",
